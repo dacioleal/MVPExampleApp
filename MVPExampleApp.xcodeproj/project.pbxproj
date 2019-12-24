@@ -16,6 +16,7 @@
 		F33639E123AF7E59007A4944 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33639E023AF7E59007A4944 /* MainViewController.swift */; };
 		F33639E423AF7E8B007A4944 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33639E323AF7E8B007A4944 /* MainView.swift */; };
 		F3FA123123B216B40025A384 /* Conference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA123023B216B40025A384 /* Conference.swift */; };
+		F3FA123323B228EE0025A384 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA123223B228EE0025A384 /* Team.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		F33639E023AF7E59007A4944 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F33639E323AF7E8B007A4944 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F3FA123023B216B40025A384 /* Conference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conference.swift; sourceTree = "<group>"; };
+		F3FA123223B228EE0025A384 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				F3FA123023B216B40025A384 /* Conference.swift */,
+				F3FA123223B228EE0025A384 /* Team.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			files = (
 				F33639BF23AF75FA007A4944 /* AppDelegate.swift in Sources */,
 				F31FC56F23B1068B00960C54 /* DataManager.swift in Sources */,
+				F3FA123323B228EE0025A384 /* Team.swift in Sources */,
 				F33639C123AF75FA007A4944 /* SceneDelegate.swift in Sources */,
 				F3FA123123B216B40025A384 /* Conference.swift in Sources */,
 				F33639E423AF7E8B007A4944 /* MainView.swift in Sources */,
