@@ -10,13 +10,15 @@ import Foundation
 
 protocol MainViewPresenterDelegate: NSObjectProtocol {
     
-    func displayListOf(conferences: [Conference])
+    func didUpdateListOfCollegeFootballConferences()
 }
 
 
 class MainViewPresenter {
     
     weak var mainViewPresenterDelegate: MainViewPresenterDelegate?
+    
+    private var conferences = [Conference]()
     
     func setPresenterDelegate(mainViewPresenterDelegate: MainViewPresenterDelegate?) {
         self.mainViewPresenterDelegate = mainViewPresenterDelegate
@@ -25,10 +27,24 @@ class MainViewPresenter {
     func getCollegeFootballConferences() {
         DataManager.getCollegeFootballConferences { (results) in
             if let results = results {
+                self.conferences.removeAll()
+                self.conferences.append(contentsOf: results)
                 DispatchQueue.main.async {
-                    self.mainViewPresenterDelegate?.displayListOf(conferences: results)
+                    self.mainViewPresenterDelegate?.didUpdateListOfCollegeFootballConferences()
                 }
             }
         }
+    }
+    
+    func getNumberOfCollegeFootballConferences() -> Int {
+        return conferences.count
+    }
+    
+    func getNameForCollegeFootballConferenceAt(index: Int) -> String? {
+        if conferences.indices.contains(index) {
+            let conference = conferences[index]
+            return conference.name
+        }
+        return nil
     }
 }

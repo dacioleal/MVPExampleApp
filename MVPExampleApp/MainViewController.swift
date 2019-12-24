@@ -10,8 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController, MainViewPresenterDelegate {
     
-    
-    
     var mainView: MainView!
     
     private let presenter = MainViewPresenter()
@@ -19,10 +17,13 @@ class MainViewController: UIViewController, MainViewPresenterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.title = "MVP App"
+        self.title = "MVP Example App"
         self.presenter.setPresenterDelegate(mainViewPresenterDelegate: self)
         
         createMainView()
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "conferenceCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,8 +47,26 @@ class MainViewController: UIViewController, MainViewPresenterDelegate {
     
     
     //MARK: - MainViewPresenterDelegate
-    func displayListOf(conferences: [Conference]) {
-        //TODO: Update the tableview with the elements
-        print("Conferences: \(conferences)")
+    func didUpdateListOfCollegeFootballConferences() {
+        self.mainView.tableView.reloadData()
+    }
+}
+
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.presenter.getNumberOfCollegeFootballConferences()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "conferenceCell")
+        cell.textLabel?.text = self.presenter.getNameForCollegeFootballConferenceAt(index: indexPath.row)
+        return cell
     }
 }
