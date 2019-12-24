@@ -47,4 +47,12 @@ class MainViewPresenter {
         }
         return nil
     }
+    
+    func getAbbreviationForCollegeFootballConferenceAt(index: Int) -> String? {
+        if conferences.indices.contains(index) {
+            let conference = conferences[index]
+            return conference.abbreviation
+        }
+        return nil
+    }
 }

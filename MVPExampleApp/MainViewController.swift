@@ -80,4 +80,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.textLabel?.text = "COLLEGE FOOTBALL CONFERENCES"
         return headerView
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let conferenceAbbrev = self.presenter.getAbbreviationForCollegeFootballConferenceAt(index: indexPath.row)
+        
+        if let abbreviation = conferenceAbbrev {
+            //Temporary implementation to test the api call to get the teams. A new detail viewcontroller and presenter is needed to be built
+            DataManager.getTeamsFromConference(conferenceAbbreviation: abbreviation) { (teams) in
+                if let teams = teams {
+                    print("Teams: \(teams)")
+                }
+            }
+        }
+    }
 }

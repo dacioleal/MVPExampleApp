@@ -14,14 +14,14 @@ struct Team: Codable {
     var school: String
     var mascot: String
     var abbreviation: String
-    var altName1: String
-    var altName2: String
-    var altName3: String
+    var altName1: String?
+    var altName2: String?
+    var altName3: String?
     var conference: String
     var division: String
-    var color: String
-    var altColor: String
-    var logos: [String]
+    var color: String?
+    var altColor: String?
+    var logos: [String]?
     
     private enum CodingKeys: String, CodingKey {
         case id
