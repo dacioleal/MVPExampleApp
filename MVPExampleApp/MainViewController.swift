@@ -17,6 +17,7 @@ class MainViewController: UIViewController, MainViewPresenterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]
         self.title = "MVP Example App"
         self.presenter.setPresenterDelegate(mainViewPresenterDelegate: self)
         
@@ -53,6 +54,8 @@ class MainViewController: UIViewController, MainViewPresenterDelegate {
 }
 
 
+
+
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,9 +67,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = UITableViewCell(style: .default, reuseIdentifier: "conferenceCell")
+        cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        cell.textLabel?.textColor = UIColor.darkGray
         cell.textLabel?.text = self.presenter.getNameForCollegeFootballConferenceAt(index: indexPath.row)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+        headerView.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        headerView.textLabel?.text = "COLLEGE FOOTBALL CONFERENCES"
+        return headerView
     }
 }

@@ -15,7 +15,7 @@ class MainView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.yellow
-        self.tableView = UITableView(frame: frame, style: .plain)
+        self.tableView = UITableView(frame: frame, style: .grouped)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.tableView)
         
