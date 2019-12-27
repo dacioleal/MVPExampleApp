@@ -14,7 +14,7 @@ class DataManager {
         print("Error: \(error)")
     }
     
-    //Builds generic URLSession to get an array of objects
+    //Builds the URLSession to get a JSON containing an array of objects of type T from the api
     static func executeURLSessionDataTaskForArrayJSON<T:Codable>(request: URLRequest, completion: @escaping (_ results:[T]?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -53,7 +53,7 @@ class DataManager {
         }
     }
     
-    //Gets the list of teams from a conference as an array of Team objects from the api service
+    //Gets the list of teams for a specific conference as an array of Team objects from the api service
     static func getTeamsFromConference(conferenceAbbreviation: String, completion: @escaping (_ results:[Team]?) -> Void) {
         let url = URL(string: "https://api.collegefootballdata.com/teams?conference=" + conferenceAbbreviation)
         var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60.0)
